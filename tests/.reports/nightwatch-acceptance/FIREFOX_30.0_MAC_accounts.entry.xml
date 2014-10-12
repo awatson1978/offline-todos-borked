@@ -2,14 +2,14 @@
 <testsuites name="accounts.entry"
              errors="0"
              failures="0"
-             tests="21">
+             tests="22">
   
   <testsuite errors="0" failures="0" hostname="" id=""
     name="App Layout" package="accounts.entry" skipped="0"
-    tests="21" time="" timestamp="">
+    tests="22" time="" timestamp="">
     
     
-      <testcase name="Element &lt;body&gt; was visible after 86 milliseconds.">
+      <testcase name="Element &lt;body&gt; was visible after 200 milliseconds.">
         
         
       </testcase>
@@ -50,6 +50,11 @@
       </testcase>
     
       <testcase name="== A. SIGN UP PAGE">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#entrySignUp&gt; is present.">
         
         
       </testcase>

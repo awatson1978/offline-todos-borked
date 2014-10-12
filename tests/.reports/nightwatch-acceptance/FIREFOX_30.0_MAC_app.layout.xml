@@ -9,7 +9,7 @@
     tests="25" time="" timestamp="">
     
     
-      <testcase name="Element &lt;body&gt; was visible after 213 milliseconds.">
+      <testcase name="Element &lt;body&gt; was visible after 196 milliseconds.">
         
         
       </testcase>
@@ -64,7 +64,7 @@
         
       </testcase>
     
-      <testcase name="Testing if element &lt;#taskListPage&gt; is present.">
+      <testcase name="Testing if element &lt;#todosListPage&gt; is present.">
         
         
       </testcase>

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites name="app.static"
              errors="0"
-             failures="4"
+             failures="0"
              tests="27">
   
-  <testsuite errors="0" failures="4" hostname="" id=""
+  <testsuite errors="0" failures="0" hostname="" id=""
     name="App Layout" package="app.static" skipped="0"
     tests="27" time="" timestamp="">
     
     
-      <testcase name="Element &lt;body&gt; was visible after 210 milliseconds.">
+      <testcase name="Element &lt;body&gt; was visible after 176 milliseconds.">
         
         
       </testcase>
@@ -126,28 +126,20 @@
     
       <testcase name="Testing if element &lt;#aboutPage&gt; is present.">
         
-          <failure message="Expected &quot;present&quot; but got: &quot;null&quot;"></failure>
-        
         
       </testcase>
     
       <testcase name="Testing if element &lt;#glossaryPage&gt; is present.">
-        
-          <failure message="Expected &quot;present&quot; but got: &quot;null&quot;"></failure>
         
         
       </testcase>
     
       <testcase name="Testing if element &lt;#eulaPage&gt; is present.">
         
-          <failure message="Expected &quot;present&quot; but got: &quot;null&quot;"></failure>
-        
         
       </testcase>
     
       <testcase name="Testing if element &lt;#privacyPage&gt; is present.">
-        
-          <failure message="Expected &quot;present&quot; but got: &quot;null&quot;"></failure>
         
         
       </testcase>
