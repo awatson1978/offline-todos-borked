@@ -18,6 +18,7 @@ git clone https://github.com/grovelabs/basilicious.git
 # And then running it...
 cd basilicious
 meteor
+````
 
 
 ============================
