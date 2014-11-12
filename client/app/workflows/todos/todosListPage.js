@@ -26,6 +26,9 @@ Template.todosListPage.rendered = function() {
 // TEMPLATE OUTPUTS
 
 Template.todosListPage.helpers({
+  list: function(){
+    return Lists.findOne(Session.get('selectedListId'));
+  },
   editing: function() {
     return Session.get(EDITING_KEY);
   },

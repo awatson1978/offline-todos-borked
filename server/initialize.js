@@ -23,16 +23,25 @@ Meteor.startup(function () {
     ];
 
     var timestamp = (new Date()).getTime();
-    _.each(data, function(list) {
+
+    data.forEach(function(list){
       var list_id = Lists.insert({name: list.name,
         incompleteCount: list.items.length});
 
-      _.each(list.items, function(text) {
-        Todos.insert({listId: list_id,
-                      text: text,
-                      createdAt: new Date(timestamp)});
-        timestamp += 1; // ensure unique timestamp.
-      });
+      if(list.items){
+        list.items.forEach(function(text){
+          // add a new task
+          Todos.insert({
+            listId: list_id,
+            public: true,
+            text: text,
+            createdAt: new Date(timestamp)}
+          );
+
+          // ensure unique timestamp.
+          timestamp += 1;
+        });
+      }
     });
   }
 });
