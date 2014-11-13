@@ -4,37 +4,23 @@
 
     <section id="sidebarMenu" class="sidebarMenu">
 
-      {{#if currentUser}}
-        <div class="btns-group-vertical panel">
-          <a id="currentUserEmail" href="#" class="js-user-menu btn-secondary">
-            {{#if userMenuOpen}}
-              <span class="icon-arrow-up"></span>
-              {{else}}
-              <span class="icon-arrow-down"></span>
-            {{/if}}
-            {{email}}
-          </a>
-          {{#if userMenuOpen}}
-            <hr>
-            <a id="aboutButton" class="btn-secondary" href="{{pathFor 'aboutPage'}}">About Grove Planner</a>
-            <a id="glossaryButton" class="btn-secondary" href="{{pathFor 'glossaryPage'}}">Grove Glossary</a>
-            <a id="eulaButton" class="btn-secondary" href="{{pathFor 'eulaPage'}}">End User Agreement</a>
-            <a id="privacyButton" class="btn-secondary" href="{{pathFor 'privacyPage'}}">Privacy Policy</a>
-            <hr>
-            <a id="logoutButton" class="js-logout btn-secondary">Logout</a>
-          {{/if}}
-        </div>
-      {{else}}
-        <div id="entryButtons" class="btns-group panel">
-          <a id="signInButton" href="{{pathFor 'entrySignIn'}}" class="btn-secondary">Sign In</a>
-          <a id="signUpButton" href="{{pathFor 'entrySignUp'}}" class="btn-secondary">Join</a>
-        </div>
-      {{/if}}
-
-
       <div id="todosLists" class="todosLists">
-
         <div class="panel panel-default">
+          {{#if currentUser}}
+            <a id="currentUserEmail" href="#" class="js-user-menu">
+              <!-- {{#if userMenuOpen}}
+                <span class="icon-arrow-up"></span>
+                {{else}}
+                <span class="icon-arrow-down"></span>
+              {{/if}} -->
+              {{email}}
+            </a>
+          {{else}}
+            <a id="signInButton" href="{{pathFor 'entrySignIn'}}">Sign In</a>
+          {{/if}}
+
+          <hr>
+
           <div class="panel-body">
             <a id="newListButton" class="js-new-list link-list-new"><span class="icon-plus"></span>New List</a>
             {{#each lists}}
@@ -49,13 +35,23 @@
               </a>
             {{/each}}
           </div>
+          <hr>
+          <a id="aboutButton" href="{{pathFor 'aboutPage'}}">About Taskpad</a>
+          <a id="glossaryButton" href="{{pathFor 'glossaryPage'}}">Glossary</a>
+          <a id="eulaButton" href="{{pathFor 'eulaPage'}}">End User Agreement</a>
+          <a id="privacyButton" href="{{pathFor 'privacyPage'}}">Privacy Policy</a>
+          {{#if currentUser}}
+            <hr>
+            <a id="logoutButton" class="js-logout">Logout</a>
+          {{/if}}
+          <hr>
+          <div id="connectionStatusPanel" class="centered">
+            {{getConnectionStatus}}
+          </div>
+
         </div>
-
       </div>
 
-      <div id="connectionStatusPanel" class="panel">
-        {{getConnectionStatus}}
-      </div>
     </section>
 
 

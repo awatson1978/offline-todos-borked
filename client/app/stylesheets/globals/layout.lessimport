@@ -3,8 +3,8 @@
 
 body {
   .position(absolute, 0, 0, 0, 0);
-  //.background-image( linear-gradient(top, #315481, #918e82 100%) );
-  .background-image( url('/img/basil.jpg'));
+  .background-image( linear-gradient(top, #6ca66a, #918e82 100%) );
+  //.background-image( url('/img/basil.jpg'));
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
