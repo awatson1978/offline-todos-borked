@@ -1,11 +1,17 @@
-basilicious
+offline-todos
 ============================
 
-Grove version of the Todos boilerplate example.
+Improved version of the Todos boilerplate example.  Includes:
+
+- offline mode via grounddb
+- responsive design to support tablet rotation  
+- selenium/nightwatch acceptance tests  
+- migrating towards a workflow-centric MVC pattern
 
 ============================
 #### Meteor Version
-0.9.3
+
+1.0
 
 
 ============================
@@ -13,10 +19,10 @@ Grove version of the Todos boilerplate example.
 
 ````sh
 # Should be as simple as cloning the repository...  
-git clone https://github.com/grovelabs/basilicious.git
+git clone https://github.com/awatson1978/offline-todos.git
 
 # And then running it...
-cd basilicious
+cd offline-todos
 meteor
 ````
 
