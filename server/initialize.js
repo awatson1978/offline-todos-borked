@@ -2,26 +2,38 @@
 Meteor.startup(function () {
   if (Lists.find().count() === 0) {
     var data = [
-      {name: "Grove Installation",
-       items: ["Unpack supplies.",
-         "Select location for grove appliance.",
-         "Connect appliance to water line and electrical outlet.",
-         "Fill net pots with hydroton clay.",
-         "Place seeds in rock wool.",
-         "Put rock wool in net pots with hydroton clay.",
-         "Connect lights and sensors."
+      {name: "Meteor Principles",
+       items: ["Data on the Wire",
+         "One Language",
+         "Database Everywhere",
+         "Latency Compensation",
+         "Full Stack Reactivity",
+         "Embrace the Ecosystem",
+         "Simplicity Equals Productivity"
        ]
       },
-      {name: "Grove Maintenance",
-       items: ["Check water connections.",
-         "Check water connections.",
-         "Change water.",
-         "Check pH levels",
-         "Unpower appliance and power it back on."
+      {name: "Languages",
+       items: ["Lisp",
+         "C",
+         "C++",
+         "Python",
+         "Ruby",
+         "JavaScript",
+         "Scala",
+         "Erlang",
+         "6502 Assembly"
          ]
+      },
+      {name: "Favorite Scientists",
+       items: ["Ada Lovelace",
+         "Grace Hopper",
+         "Marie Curie",
+         "Carl Friedrich Gauss",
+         "Nikola Tesla",
+         "Claude Shannon"
+       ]
       }
     ];
-
     var timestamp = (new Date()).getTime();
 
     data.forEach(function(list){
