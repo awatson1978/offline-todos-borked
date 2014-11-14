@@ -21,10 +21,10 @@ Meteor.publish('todos', function() {
   if(this.userId){
     return Todos.find({$or:[
       {ownerId: this.userId},
-      {public: {$exists: true}}
+      {public: true}
       ]});
     // return Todos.find({listId: userId});
   }else{
-    return Todos.find({public: {$exists: true}});
+    return Todos.find({public: true});
   }
 });

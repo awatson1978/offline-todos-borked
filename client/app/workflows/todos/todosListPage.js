@@ -96,18 +96,36 @@ Template.todosListPage.events({
     template.$('.js-todo-new input').focus();
   },
 
-  'submit .js-todo-new': function(event) {
+  'keyup #listPanelNewItemInput': function(event) {
+    console.log('click #listPanelNewItemInput');
+
     event.preventDefault();
 
-    var $input = $(event.target).find('[type=text]');
-    Todos.insert({
-      listId: this._id,
-      text: $input.val(),
-      checked: false,
-      createdAt: new Date()
-    });
-    Lists.update(this._id, {$inc: {incompleteCount: 1}});
-    $input.val('');
+    if(event.keyCode == 13) {
+
+      var newTask = {
+        listId: this._id,
+        text: $('#listPanelNewItemInput').val(),
+        checked: false,
+        createdAt: new Date()
+      }
+
+      if(Meteor.userId()){
+        newTask.public = false;
+      }else{
+        newTask.public = true;
+      }
+
+      console.log('newTask', newTask);
+
+      var result = Todos.insert(newTask);
+
+      console.log('result', result);
+
+      Lists.update(this._id, {$inc: {incompleteCount: 1}});
+      $('#listPanelNewItemInput').val('');
+
+    }
   }
 });
 
