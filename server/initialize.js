@@ -25,12 +25,13 @@ Meteor.startup(function () {
          ]
       },
       {name: "Favorite Scientists",
-       items: ["Ada Lovelace",
-         "Grace Hopper",
-         "Marie Curie",
-         "Carl Friedrich Gauss",
+       items: [
          "Nikola Tesla",
-         "Claude Shannon"
+         "Marie Curie",
+         "Grace Hopper",
+         "Claude Shannon",
+         "Carl Friedrich Gauss",
+         "Ada Lovelace"
        ]
       }
     ];
