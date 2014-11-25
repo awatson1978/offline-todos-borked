@@ -3,7 +3,7 @@
 
 body {
   .position(absolute, 0, 0, 0, 0);
-  .background-image( linear-gradient(top, #6ca66a, #918e82 100%) );
+  .background-image( linear-gradient(top, #6ca66a, #bbcaba 100%) );
   //.background-image( url('/img/basil.jpg'));
   -webkit-background-size: cover;
   -moz-background-size: cover;
