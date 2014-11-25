@@ -10,20 +10,13 @@ Meteor.publish('privateLists', function() {
   }
 });
 
-// Meteor.publish('todos', function(listId) {
-//   check(listId, String);
-//
-//   return Todos.find({listId: listId});
-// });
 
 Meteor.publish('todos', function() {
-  //check(userId, String);
   if(this.userId){
     return Todos.find({$or:[
       {ownerId: this.userId},
       {public: true}
       ]});
-    // return Todos.find({listId: userId});
   }else{
     return Todos.find({public: true});
   }

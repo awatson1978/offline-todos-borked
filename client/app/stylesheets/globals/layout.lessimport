@@ -50,7 +50,7 @@ body {
 
 #contentContainer {
   .position(absolute, 0, 0, 0, 0);
-  //.transition(all 200ms ease-out);
+  .transition(all 200ms ease-out);
   .transform(translate3d(0, 0, 0));
   //background: @color-tertiary;
   opacity: 1;
