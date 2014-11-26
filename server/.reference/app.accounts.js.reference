@@ -1,0 +1,12 @@
+//
+// see https://www.eventedmind.com/feed/meteor-customizing-login
+//
+// Work in progress.  Not going to work since I haven't chaned getGoogleContacts and getGoogleGroups to one function
+Accounts.onCreateUser(function(options, user) {
+
+    // TODO: take out comments to import google contacts
+    // Meteor.call('importContacts');
+
+    // TODO: get user profile
+
+});

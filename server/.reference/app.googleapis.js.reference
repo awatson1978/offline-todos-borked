@@ -1,0 +1,73 @@
+//https://www.npmjs.org/package/googleapis
+//https://davidbeath.com/posts/using-node-modules-with-meteor.html
+// Perhaps use the jwtclient instead?
+//https://github.com/google/google-api-nodejs-client/blob/master/lib/auth/jwtclient.js
+Meteor.methods({
+  'importGoogleContacts': function() {
+    console.log('importGoogleContacts!');
+    console.log('Meteor.user().services.google.accessToken', Meteor.user().services.google.accessToken);
+    //var google = require('googleapis');
+    var google = googleapis;
+    var OAuth2 = google.auth.OAuth2;
+
+    var clientId = ServiceConfiguration.configurations.findOne({service: 'google'}, {fields: {clientId:1, _id:0}});
+    if (!clientId) throw new ServiceConfiguration.ConfigError();
+    var CLIENT_ID = clientId.clientId;
+
+
+    var secret = ServiceConfiguration.configurations.findOne({service: 'google'}, {fields: {secret:1, _id:0}});
+    if (!secret) throw new ServiceConfiguration.ConfigError();
+    var CLIENT_SECRET = secret.secret;
+
+
+    var REDIRECT_URL = "http://localhost:3000/_oauth/google?close";
+
+
+    var oauth2Client = new OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL);
+    oauth2Client.setCredentials({
+      access_token: Meteor.user().services.google.accessToken
+    });
+
+    // generate a url that asks permissions for Google+ and Google Calendar scopes
+    var scopes = [
+      'https://www.googleapis.com/auth/plus.me',
+      'https://www.google.com/m8/feeds'
+    ];
+
+    var url = oauth2Client.generateAuthUrl({
+      access_type: 'offline', // 'online' (default) or 'offline' (gets refresh_token)
+      scope: scopes // If you only need one scope you can pass it as string
+    });
+
+  // TODO
+  // how do we get the code?
+  // try the oauth playground
+  // The authorization code is in the response url
+    //oauth2Client.getToken(code, function(err, tokens) {
+      // Now tokens contains an access_token and an optional refresh_token. Save them.
+    //  if(!err) {
+    //    oauth2Client.setCredentials(tokens);
+    //  }
+    //});
+
+    // TESTING plus
+    var plus = google.plus('v1');
+
+    plus.people.get({ userId: 'me', auth: oauth2Client }, function(err, response) {
+      // handle err and response
+      // See https://developers.google.com/apis-explorer/#p/plus/v1/plus.people.get?userId=me&_h=2&
+      if(!err) {
+
+        console.log("in plus");
+        console.log(response);
+      }
+      else {
+        console.log(err);
+        }
+
+    });
+
+
+
+  }
+});

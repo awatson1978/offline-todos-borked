@@ -1,0 +1,25 @@
+<template name="upsertContact">
+  <div id="upsertContact">
+    {{#with contact}}
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h3 class="panel-title">{{getUpsertContactTitle}}</h3>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="contactNameInput">Name</label>
+            <input id="contactNameInput" type="text" class="form-control" value={{name}}>
+          </div>
+          <div class="form-group">
+            <label for="contactEmailInput">Email</label>
+            <input type="text" class="form-control" id="contactEmailInput" placeholder="jane@somewhere.net" value={{email.primary}}>
+          </div>
+
+          <button id="upsertContactButton" class="btn btn-success">Create Contact</button>
+          <button id="deleteContactButton" class="btn btn-success">Delete</button>
+
+        </div>
+      </div>
+    {{/with}}
+  </div>
+</template>

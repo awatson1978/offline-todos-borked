@@ -14,6 +14,30 @@ Template.entrySignIn.helpers({
 });
 
 Template.entrySignIn.events({
+  'click #signInWithGoogleButton':function(){
+    Meteor.loginWithGoogle(
+      {
+        requestPermissions: [
+          'profile',
+          'email',
+          'https://www.googleapis.com/auth/plus.login',
+          'https://www.googleapis.com/auth/plus.profile.emails.read',
+          'https://www.google.com/m8/feeds'],
+        requestOfflineToken: 'true'
+      }, Router.go('/'));
+      // Meteor.loginWithGoogle(
+      //   {
+      //     requestPermissions: [
+      //     'profile',
+      //     'email',
+      //     'verified_email',
+      //     'https://www.googleapis.com/auth/plus.login',
+      //     'https://www.googleapis.com/auth/yt-analytics.readonly',
+      //     'https://www.googleapis.com/auth/youtube',
+      //     'https://picasaweb.google.com/data/'],
+      //     requestOfflineToken: 'true'
+      //   }, Router.go('/'));
+  },
   'submit': function(event, template) {
     event.preventDefault();
 
@@ -42,5 +66,6 @@ Template.entrySignIn.events({
 
       Router.go('home');
     });
+    
   }
 });

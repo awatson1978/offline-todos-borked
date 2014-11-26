@@ -1,0 +1,9 @@
+<template name="sendMessages">
+  <form role="form">
+    <div class="form-group">
+      <input type="text" name="subject" id="subject" class="form-control" placeholder="Subject" value={{messages.subject}}>
+      <input type="text" name="message" id="message" class="form-control" placeholder="Message" value = {{messages.message}}>
+      <button id="sendMessagesButton" class="btn btn-info">Send Messages to Everyone in this Group</button>
+    </div>
+  </form>
+</template>

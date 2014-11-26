@@ -1,0 +1,35 @@
+<template name="editMessage">
+  {{#with messages}}
+    <form>
+      <div>
+        <label>Subject</label>
+        <input id="subject" type="text" value="{{subject}}" />
+      </div>
+      <div>
+        <label>Message</label>
+        <textarea id="body" value="" class="input-xlarge"> {{body}} </textarea>
+      </div>
+      <label class="checkbox">
+        <input type="checkbox" checked="{{queue}}" name="queue">
+        <span class="checkbox-custom"></span>
+      </label>
+
+      <div>
+        <label>Queue?</label>
+        <input type="checkbox" name="queue" id="queue" value="{{queue}}" />
+      </div>
+      <div>
+        <label>Delay Interval</label>
+        <select name="Delay">
+          <option value="300">5 minutes</option>
+          <option value="900">15 minutes</option>
+          <option value="1800" selected>30 minutes</option>
+          <option value="3600">1 hour</option>
+        </select>
+      </div>
+      <div class="form-actions">
+        <input type="submit" value="Submit" />
+      </div>
+    </form>
+  {{/with}}
+</template>

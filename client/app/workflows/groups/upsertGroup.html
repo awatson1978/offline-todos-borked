@@ -1,0 +1,43 @@
+<template name="upsertGroup">
+  <div id="upsertGroup">
+    {{#with group}}
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+          <h3 class="panel-title">{{getUpsertGroupTitle}}</h3>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="groupTitleInput">Title</label>
+            <input id="groupTitleInput" type="text" class="form-control" placeholder="Friends" value="{{title}}">
+          </div>
+          <div class="form-group">
+            <label for="groupDescriptionInput">Description</label>
+            <input id="groupDescriptionInput" type="text" class="form-control" placeholder="Friends and Family" value="{{description}}">
+          </div>
+          <hr>
+          <label for="" class="padded-left">Members</label>
+          <ul class="list-group">
+            {{#each contacts}}
+            <li id="{{_id}}" class="list-group-item">
+              {{name}}
+              <span class="show-menu">
+    						<span class="glyphicon glyphicon-chevron-right"></span>
+    					</span>
+    					<ul class="list-group-submenu">
+    						<li class="list-group-submenu-item danger"><span class="glyphicon glyphicon-remove extra-wide"></span></li>
+    						<!-- <li class="list-group-submenu-item danger"><span class="glyphicon glyphicon-ok"></span></li> -->
+    					</ul>
+            </li>
+            {{/each}}
+          </ul>
+          <hr>
+          <button id="addContactToGroupButton" class="fullwidth btn btn-warning">Add Contact</button><br><br>
+
+          <button id="upsertGroupButton" class="btn btn-warning">Create Group</button>
+          <button id="deleteGroupButton" class="btn btn-warning">Delete</button>
+
+        </div>
+      </div>
+    {{/with}}
+  </div>
+</template>

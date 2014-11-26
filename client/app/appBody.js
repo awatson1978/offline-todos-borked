@@ -28,14 +28,16 @@ Template.appBody.rendered = function() {
         .hide()
         .insertBefore(next)
         .fadeIn();
-    },
-    removeElement: function(node) {
-      $(node).fadeOut(function() {
-        this.remove();
-      });
     }
+    // removeElement: function(node) {
+    //   $(node).fadeOut(function() {
+    //     this.remove();
+    //   });
+    // }
   };
 };
+
+
 
 Template.appBody.destroyed = function() {
   if (Meteor.isCordova) {
@@ -48,6 +50,25 @@ Template.appBody.destroyed = function() {
 // TEMPLATE OUTPUTS
 
 Template.appBody.helpers({
+  getProfileName: function () {
+    console.log('Meteor.userId()', Meteor.userId());
+
+    var user = Meteor.users.findOne(Meteor.userId());
+    if(user){
+      if(user && user.profile){
+        if(user && user.profile && user.profile.name){
+          return user.profile.name;
+
+        }else{
+          return "No user name.";
+        }
+      }else{
+        return "No user profile.";
+      }
+    }else{
+      return "No user object.";
+    }
+  },
   getConnectionStatus: function () {
     return Meteor.status().status;
   },

@@ -1,0 +1,18 @@
+<template name="configureProfile">
+  <div id="configureProfile" class="padded page">
+    <div class="row">
+      <div class="col-md-12">
+        <img src="https://s3.amazonaws.com/jugglenut-assets/img/jugglenut_message_logo_TM.png" class="img-responsive" alt="Responsive image">
+        <p>Jugglenut is a messaging app for automating communication. A parent can easily communicate childcare needs to a network of trusted childcare providers. A Babysitter can easily communicate availability to parents.</p>
+
+        <br>
+        <br>
+        {{#if currentUser }}
+        <button id="importGoogleContactsButton" class="fullwidth btn btn-danger">Import Google Contacts</button><br><br>
+        {{/if}}
+
+      </div>
+    </div>
+
+  </div>
+</template>

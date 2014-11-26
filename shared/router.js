@@ -38,13 +38,29 @@ Router.map(function() {
     // }
   });
 
-  this.route('home', {
-    path: '/',
-    action: function() {
-      Router.go('todosListPage', Lists.findOne());
-    }
-  });
+  // this.route('home', {
+  //   path: '/',
+  //   action: function() {
+  //     Router.go('todosListPage', Lists.findOne());
+  //   }
+  // });
 });
+
+Router.route('/', function(){
+  this.render('configureProfile');
+})
+
+Router.route('/contacts', function(){
+  this.render('displayContacts');
+})
+Router.route('/groups', function(){
+  this.render('displayGroups');
+})
+
+
+
+
+
 
 if (Meteor.isClient) {
   //Router.onBeforeAction('loading', {except: ['entrySignUp', 'entrySignIn']});

@@ -13,14 +13,17 @@
                 {{else}}
                 <span class="icon-arrow-down"></span>
               {{/if}} -->
-              {{email}}
+              {{ getProfileName }}
             </a>
           {{else}}
             <a id="signInButton" href="{{pathFor 'entrySignIn'}}">Sign In</a>
           {{/if}}
 
           <hr>
+          <a id="contactsButton" href="/contacts">Contacts</a>
+          <a id="groupsButton" href="/groups">Groups</a>
 
+          <hr>
           <div class="panel-body">
             <a id="newListButton" class="js-new-list link-list-new"><span class="icon-plus"></span>New List</a>
             {{#each lists}}

@@ -1,0 +1,79 @@
+<template name="displayGroups">
+  <div id="displayGroups">
+
+    <nav id="listPanelHeader" class="js-title-nav">
+      {{#if editing}}
+      <form class="js-edit-form list-edit-form">
+        <input type="text" name="name" value="{{name}}">
+        <div class="nav-group right">
+          <a href="#" class="js-cancel nav-item"><span class="icon-close" title="Cancel"></span></a>
+        </div>
+      </form>
+      {{else}}
+      <div class="nav-group">
+        <a href="#" class="js-menu nav-item"><span class="icon-list-unordered" title="Show menu"></span></a>
+      </div>
+
+      <h1 id="listPanelTitle" class="js-edit-list title-page"><span class="title-wrapper">{{name}}</span>
+        <span id="listPanelItemCount" class="count-list">{{incompleteCount}}</span>
+      </h1>
+
+      <div class="nav-group right">
+        <div class="nav-item options-mobile">
+          <select class="list-edit">
+            <option disabled selected>Select an action</option>
+            {{#if userId}}
+            <option value="public">Make Public</option>
+            {{else}}
+            <option value="private">Make Private</option>
+            {{/if}}
+            <option value="delete">Delete</option>
+          </select>
+          <span class="icon-cog"></span>
+        </div>
+        <div class="options-web">
+          <a class="js-toggle-list-privacy nav-item">
+            {{#if userId}}
+            <span id="listPanelLockIcon" class="icon-lock" title="Make list private"></span>
+            {{else}}
+            <span id="listPanelLockIcon" class="icon-unlock" title="Make list public"></span>
+            {{/if}}
+          </a>
+
+          <a id="listPanelDeleteIcon" class="js-delete-list nav-item">
+            <span class="icon-trash" title="Delete list"></span>
+          </a>
+        </div>
+      </div>
+      {{/if}}
+
+      <form class="js-todo-new todo-new input-symbol">
+        <input id="listPanelNewItemInput" type="text" placeholder="Type to add new tasks">
+        <span id="listPanelNewItemIcon" class="icon-add js-todo-add"></span>
+      </form>
+    </nav>
+
+    
+
+    <!-- <input id="groupSearchInput" class="fullwidth" type="text" name="search" placeholder="Search..." value="{{getGroupSearchFilter}}"> -->
+    <ul class="list-unstyled">
+      {{#each groups}}
+      <li class="groupListItem">
+        <span class="groupTitle"><b>{{title}}</b></span><br>
+        <span class="groupDescription">{{description}}</span>
+      </li>
+      {{/each}}
+      {{#if noGroups}}
+      <li id="noGroupsMessage">
+        <p>
+          No groups were found with that search.
+        </p>
+      </li>
+      {{/if}}
+      <li id="groupControls">
+        <button id="upsertGroupButton" class="btn btn-warning">New Group</button>
+        <button id="clearGroup" class="btn btn-warning">Clear Selection</button>
+      </li>
+    </ul>
+  </div>
+</template>

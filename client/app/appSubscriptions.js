@@ -6,3 +6,6 @@
   //   Meteor.subscribe('todos', false);
   // }
 //});
+Meteor.subscribe("groups");
+Meteor.subscribe("contacts");
+Meteor.subscribe("messages");
