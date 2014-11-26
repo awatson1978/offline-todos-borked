@@ -1,0 +1,36 @@
+<template name="groupsListPage">
+  <div id="groupsListPage" class="page lists-show">
+
+    <nav id="listPanelHeader" class="page-nav js-title-nav">
+      <h1 id="listPanelTitle" class="js-edit-list title-page"><span class="title-wrapper">Groups</span></h1>
+      <!-- <input id="listPanelNewItemInput" type="text" placeholder="Type to add new tasks"> -->
+      <div class="search">
+        <!-- <input id="contactSearchInput" class="search fullwidth" type="text" name="search" placeholder="Search..." value="{{getContactSearchFilter}}"> -->
+        <input id="listPanelNewItemInput" class="search-text" type="text" placeholder="Search groups..." autocomplete="off">
+        <span id="listPanelNewItemIcon" class="icon-edit js-todo-add"></span>
+      </div>
+    </nav>
+
+
+    <!-- <input id="groupSearchInput" class="fullwidth" type="text" name="search" placeholder="Search..." value="{{getGroupSearchFilter}}"> -->
+    <ul id="groupsList" class="list-unstyled">
+      {{#each groups}}
+      <li class="groupListItem">
+        <span class="groupTitle"><b>{{title}}</b></span><br>
+        <span class="groupDescription">{{getDescription}}</span>
+      </li>
+      {{/each}}
+      {{#if noGroups}}
+        <li id="noGroupsMessage">
+          <p>
+            No groups were found with that search.
+          </p>
+        </li>
+      {{/if}}
+      <!-- <li id="groupControls">
+        <button id="upsertGroupButton" class="btn btn-warning">New Group</button>
+        <button id="clearGroup" class="btn btn-warning">Clear Selection</button>
+      </li> -->
+    </ul>
+  </div>
+</template>

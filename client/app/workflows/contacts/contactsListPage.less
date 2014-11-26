@@ -1,7 +1,10 @@
-#displayGroups{
+#contactsListPage{
+  //padding-top: 4em !important;
+  //padding-bottom: 4em !important;
+
   input{
     padding-left: 20px !important;
-    font-size: 20px !important;
+    font-size: 14px !important;
     box-shadow: none;
     margin-bottom: 0px;
     border-radius: 0px;
@@ -13,45 +16,48 @@
     margin: 0px;
   }
   .list-unstyled{
-    border-top: 1px solid lightgray;
+    border-top: 0px solid lightgray;
     margin-left: 0px;
     li{
       padding-left: 20px;
     }
   }
-  .groupListItem{
+  .contactListItem{
     border-top: 1px solid lightgray;
     padding-top: 10px;
     padding-bottom: 10px;
     cursor: pointer;
   }
-  .groupListItem:hover{
-    background-color: #fcf8e3;
+  .contactListItem:hover{
+    background-color: #dff0d8;
   }
-
-  .groupTitle{
-    color: goldenrod;
+  .contactName{
+    color: forestgreen;
     font-size: 120%;
   }
-  .groupDescription{
+  .contactEmail{
     color: gray;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
 
-  #noGroupsMessage{
+  #noContactsMessage{
     border-top: 1px solid lightgray;
     height: 60px;
     padding-top: 20px;
     font-size: 20px;
     color: gray;
   }
-  #groupControls{
+  .contactControls{
     border-top: 1px solid lightgray;
-    height: 60px !important;
     padding-top: 13px;
+    height: 60px !important;
     font-size: 20px;
     cursor: pointer;
   }
 
-
-
+  #contactsList{
+    position: absolute;
+    top: 80px;
+  }
 }

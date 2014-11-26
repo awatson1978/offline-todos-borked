@@ -45,6 +45,50 @@ Template.appBody.destroyed = function() {
   }
 };
 
+//==============================================================================
+// TEMPLATE FOOTER CONTROLS
+
+Template.registerHelper("hasGroupControls", function(argument) {
+  if (Router.current()) {
+    if (/groups/.test(Router.current().url)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+});
+Template.registerHelper("hasGroupUpsertControls", function(argument) {
+  if (Router.current()) {
+    if (/new\/group/.test(Router.current().url)) {
+      return true;
+    } else if (/edit\/group/.test(Router.current().url)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+});
+Template.registerHelper("hasContactControls", function(argument) {
+  if (Router.current()) {
+    if (/contacts/.test(Router.current().url)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+});
+Template.registerHelper("hasContactUpsertControls", function(argument) {
+  if (Router.current()) {
+    if (/new\/contact/.test(Router.current().url)) {
+      return true;
+    } else if (/edit\/contact/.test(Router.current().url)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+});
+
 
 //==============================================================================
 // TEMPLATE OUTPUTS
@@ -108,6 +152,87 @@ Template.appBody.helpers({
 // TEMPLATE INPUTS
 
 Template.appBody.events({
+  // ---------------------------------------------
+  // Groups
+  'click #clearGroup':function(){
+    Session.set('selectedGroupId', null);
+  },
+  'click #upsertGroupButton':function(){
+    Session.set('selectedGroupId', false);
+    Router.go('/new/group')
+  },
+  'click #createGroupButton': function(event, template){
+    var newGroup = {
+      title: $('#groupTitleInput').val(),
+      description: $('#groupDescriptionInput').val(),
+      createdAt: new Date(),
+      active: true,
+      groupId: Meteor.uuid()
+    }
+    //alert(EJSON.stringify(newGroup));
+    Groups.insert(newGroup);
+    Router.go('/groups');
+  },
+  'click #deleteGroupButton':function(){
+    Groups.remove({_id: Session.get('selectedGroupId')});
+    Router.go('/groups');
+  },
+  'click #addContactToGroupButton': function () {
+    Session.toggle('isModal');
+    Router.go('/contacts');
+  },
+
+
+  // ---------------------------------------------
+  // Contacts
+  'click #clearContact':function(){
+    Session.set('selectedContactId', null);
+    Session.set('contactsSearchFilter', "");
+  },
+
+  'click #upsertContactButton':function(){
+    Session.set('selectedContactId', false);
+    Router.go('/new/contact');
+  },
+  'click #createContactButton': function(event, template) {
+
+    event.preventDefault();
+    // grab values from our form and put them into a record
+    var newContact = {
+      name: $('#contactNameInput').val(),
+      email: {
+        primary: $('#contactEmailInput').val(),
+      },
+      groupId: [],
+      active: true,
+      createdAt: new Date()
+    }
+
+    newContact.groupId[0] = Session.get('selectedGroupId');
+    // TODO: validate record
+
+    // put record into collection
+    Contacts.insert(newContact);
+
+    // TODO: need to add contactPhoneInput
+    // clear our form
+    $('#contactNameInput').val("");
+    $('#contactEmailInput').val("");
+    Router.go('/contacts');
+  },
+  'click #deleteContactButton': function() {
+    Contacts.remove({
+      _id: Session.get('selectedContactId')
+    });
+    Router.go('/contacts');
+  },
+
+  // ---------------------------------------------
+  // Other
+  'click .contactsListButton':function(){
+    Router.go('/contacts');
+  },
+
   'click .js-menu': function() {
     Session.set(MENU_KEY, ! Session.get(MENU_KEY));
   },

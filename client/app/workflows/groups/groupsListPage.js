@@ -2,7 +2,14 @@
 Session.setDefault("groupsSearchFilter", "");
 
 
-Template.displayGroups.helpers({
+Template.groupsListPage.helpers({
+  getDescription: function () {
+    if(this.description){
+      return this.description;
+    }else{
+      return "---";
+    }
+  },
   getGroupSearchFilter: function () {
     return Session.get('groupsSearchFilter');
   },
@@ -26,25 +33,25 @@ Template.displayGroups.helpers({
         $regex: Session.get('groupsSearchFilter'),
         $options: 'i'
       }}, {sort: {title: 1}});
-  }
+    }
 });
 
 
 
 
-Template.displayGroups.events({
-  "keyup #groupSearchInput": function(event, template){
+Template.groupsListPage.events({
+  'keyup #groupSearchInput': function(event, template){
     Session.set('groupsSearchFilter', $('#groupSearchInput').val());
   },
-  "click .groupListItem":function(){
-    // Session.set('selectedGroupId', this._id);
-      Session.set('selectedGroupId', this.groupId);
-      console.log("groupId: ", this.groupId);
-  },
-  'click #clearGroup':function(){
-    Session.set('selectedGroupId', null);
-  },
-  'click #upsertGroupButton':function(){
-    Session.set('selectedGroupId', false)
+  'click .groupListItem':function(){
+    Session.set('selectedGroupId', this.groupId);
+    Router.go('/edit/group/' + this._id);
+    //console.log("groupId: ", this.groupId);
   }
+  // 'click #clearGroup':function(){
+  //   Session.set('selectedGroupId', null);
+  // },
+  // 'click #upsertGroupButton':function(){
+  //   Session.set('selectedGroupId', false)
+  // }
 });

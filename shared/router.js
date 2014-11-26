@@ -48,16 +48,37 @@ Router.map(function() {
 
 Router.route('/', function(){
   this.render('configureProfile');
-})
+});
+
+
+//-----------------------------------------------------
+// Contacts
 
 Router.route('/contacts', function(){
-  this.render('displayContacts');
-})
+  this.render('contactsListPage');
+});
+Router.route('/new/contact', function(){
+  this.render('upsertContactPage');
+});
+Router.route('/edit/contact/:contactId', function(){
+  this.render('upsertContactPage');
+  Session.set('selectedContactId', this.params.contactId);
+});
+
+
+//-----------------------------------------------------
+// Groups  
+
 Router.route('/groups', function(){
-  this.render('displayGroups');
-})
-
-
+  this.render('groupsListPage');
+});
+Router.route('/new/group', function(){
+  this.render('upsertGroupPage');
+});
+Router.route('/edit/group/:groupId', function(){
+  this.render('upsertGroupPage');
+  Session.set('selectedGroupId', this.params.groupId);
+});
 
 
 

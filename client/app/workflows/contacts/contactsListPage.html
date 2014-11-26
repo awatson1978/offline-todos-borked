@@ -1,0 +1,39 @@
+<template name="contactsListPage">
+  <div id="contactsListPage" class="page lists-show">
+
+    <nav id="listPanelHeader" class="page-nav js-title-nav">
+      <h1 id="listPanelTitle" class="js-edit-list title-page"><span class="title-wrapper">Contacts</span></h1>
+      <!-- <input id="listPanelNewItemInput" type="text" placeholder="Type to add new tasks"> -->
+      <div class="search">
+        <!-- <input id="contactSearchInput" class="search fullwidth" type="text" name="search" placeholder="Search..." value="{{getContactSearchFilter}}"> -->
+        <input id="listPanelNewItemInput" class="search-text" type="text" placeholder="Search contacts..." autocomplete="off">
+        <span id="listPanelNewItemIcon" class="icon-edit js-todo-add"></span>
+      </div>
+    </nav>
+
+
+
+
+    <ul id="contactsList" class="list-unstyled">
+      {{#each contacts}}
+      <li class="contactListItem">
+        <span class="contactName"><b>{{name}}</b></span><br>
+        <span class="contactEmail">{{email.primary}}</span>
+      </li>
+      {{/each}}
+      {{#if noContacts}}
+      <li id="noContactsMessage">
+        <p>
+          No contacts were found...
+        </p>
+      </li>
+      {{/if}}
+      <li class="contactControls">
+        <button id="upsertContactButton" class="btn btn-{{isGroupsModal}}">New Contact</button>
+        <button id="clearContact" class="btn btn-{{isGroupsModal}}">Clear Selection</button>
+        <!-- <span class="text">New Contact</span> -->
+      </li>
+    </ul>
+
+  </div>
+</template>

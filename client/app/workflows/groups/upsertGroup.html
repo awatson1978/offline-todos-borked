@@ -1,11 +1,21 @@
-<template name="upsertGroup">
-  <div id="upsertGroup">
+<template name="upsertGroupPage">
+  <div id="upsertGroupPage" class="page lists-show">
+    <nav id="listPanelHeader" class="page-nav js-title-nav">
+      <h1 id="listPanelTitle" class="js-edit-list title-page"><span class="title-wrapper">Edit Group</span></h1>
+      <!-- <div class="search">
+        <input id="listPanelNewItemInput" class="search-text" type="text" placeholder="Search contacts..." autocomplete="off">
+        <span id="listPanelNewItemIcon" class="icon-edit js-todo-add"></span>
+      </div> -->
+    </nav>
+
     {{#with group}}
       <div class="panel panel-warning">
         <div class="panel-heading">
           <h3 class="panel-title">{{getUpsertGroupTitle}}</h3>
         </div>
         <div class="panel-body">
+          <!-- <h3>Group Info</h3><br> -->
+
           <div class="form-group">
             <label for="groupTitleInput">Title</label>
             <input id="groupTitleInput" type="text" class="form-control" placeholder="Friends" value="{{title}}">
@@ -14,8 +24,10 @@
             <label for="groupDescriptionInput">Description</label>
             <input id="groupDescriptionInput" type="text" class="form-control" placeholder="Friends and Family" value="{{description}}">
           </div>
+
           <hr>
-          <label for="" class="padded-left">Members</label>
+          <h3>Members</h3><br>
+          <!-- <label for="" class="padded-left">Members</label> -->
           <ul class="list-group">
             {{#each contacts}}
             <li id="{{_id}}" class="list-group-item">
@@ -30,11 +42,11 @@
             </li>
             {{/each}}
           </ul>
-          <hr>
-          <button id="addContactToGroupButton" class="fullwidth btn btn-warning">Add Contact</button><br><br>
+          <!-- <hr>
+          <button id="addContactToGroupButton" class="fullwidth btn btn-warning">Add Contact</button> -->
 
-          <button id="upsertGroupButton" class="btn btn-warning">Create Group</button>
-          <button id="deleteGroupButton" class="btn btn-warning">Delete</button>
+          <!-- <button id="upsertGroupButton" class="btn btn-warning">Create Group</button>
+          <button id="deleteGroupButton" class="btn btn-warning">Delete</button> -->
 
         </div>
       </div>

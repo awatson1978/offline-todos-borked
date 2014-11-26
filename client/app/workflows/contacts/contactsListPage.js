@@ -1,21 +1,21 @@
 Session.setDefault("contactsSearchFilter", "");
 
 
-Template.displayContacts.helpers({
-  getContactSearchFilter: function () {
+Template.contactsListPage.helpers({
+  getContactSearchFilter: function() {
     return Session.get('contactsSearchFilter');
   },
-  noContacts: function () {
+  noContacts: function() {
     var count = Contacts.find({
-      groupId: Session.get("selectedGroupId"),
-
+      //groupId: Session.get("selectedGroupId"),
       name: {
         $regex: Session.get('contactsSearchFilter'),
         $options: 'i'
-      }}, {sort: {name: 1}}).count();
-    if(count === 0){
+      }
+    }).count();
+    if (count === 0) {
       return true;
-    }else{
+    } else {
       return false;
     }
   },
@@ -27,36 +27,38 @@ Template.displayContacts.helpers({
       name: {
         $regex: Session.get('contactsSearchFilter'),
         $options: 'i'
-      }}, {sort: {name: 1}});
+      }
+    }, {
+      sort: {
+        name: 1
+      }
+    });
   }
 });
 
 
-Template.displayContacts.events({
-  "keyup #contactSearchInput": function(event, template){
+Template.contactsListPage.events({
+  "keyup #contactSearchInput": function(event, template) {
     Session.set('contactsSearchFilter', $('#contactSearchInput').val());
   },
-  "click .contactListItem":function(){
-    if(Session.get('isModal')){
+  "click .contactListItem": function() {
+    if (Session.get('isModal')) {
       //Groups.update({_id: Session.get('selectedGroupId')}, {$addToSet:{
-	Groups.update({groupId: Session.get('selectedGroupId')}, {$addToSet:{
-        contacts: {
-          _id: this._id,
-          name: this.name
+      Groups.update({
+        _id: Session.get('selectedGroupId')
+      }, {
+        $addToSet: {
+          contacts: {
+            _id: this._id,
+            name: this.name
+          }
         }
-      }});
+      });
       Session.set('isModal', false);
-    }else{
+      Router.go('/edit/group/' + Session.get('selectedGroupId'));
+    } else {
       Session.set('selectedContactId', this._id);
+      Router.go('/edit/contact/' + this._id);
     }
-  },
-  'click #clearContact':function(){
-    Session.set('selectedContactId', null);
-    Session.set('contactsSearchFilter', "");
-  },
-
-  'click #upsertContactButton':function(){
-    Session.set('selectedContactId', false)
   }
-
 });

@@ -8,11 +8,6 @@
         <div class="panel panel-default">
           {{#if currentUser}}
             <a id="currentUserEmail" href="#" class="js-user-menu">
-              <!-- {{#if userMenuOpen}}
-                <span class="icon-arrow-up"></span>
-                {{else}}
-                <span class="icon-arrow-down"></span>
-              {{/if}} -->
               {{ getProfileName }}
             </a>
           {{else}}
@@ -22,22 +17,14 @@
           <hr>
           <a id="contactsButton" href="/contacts">Contacts</a>
           <a id="groupsButton" href="/groups">Groups</a>
+          <a id="messagesButton" href="/groups">Messages</a>
+
+          <!-- <hr>
+          <a id="clearContact">Clear SelectedContactId</a>
 
           <hr>
-          <div class="panel-body">
-            <a id="newListButton" class="js-new-list link-list-new"><span class="icon-plus"></span>New List</a>
-            {{#each lists}}
-              <a href="{{pathFor 'todosListPage'}}" class="listItem {{activeListClass}}" title="{{name}}">
-                {{#if userId}}
-                  <span class="icon-lock"></span>
-                {{/if}}
-                {{name}}
-                {{#if incompleteCount}}
-                  <span class="count-list">{{incompleteCount}}</span>
-                {{/if}}
-              </a>
-            {{/each}}
-          </div>
+          <a id="clearGroup">Clear SelectedGroupId</a> -->
+
           <hr>
           <a id="aboutButton" href="{{pathFor 'aboutPage'}}">About Taskpad</a>
           <a id="glossaryButton" href="{{pathFor 'glossaryPage'}}">Glossary</a>
@@ -54,7 +41,6 @@
 
         </div>
       </div>
-
     </section>
 
 
@@ -62,21 +48,98 @@
     <div class="contentOverlay"></div>
 
     <div id="contentContainer" class="tile">
-      {{#each thisArray}}
-        {{> yield}}
-      {{/each}}
+      <div id="scrollableContent">
+        {{#each thisArray}}
+          {{> yield}}
+        {{/each}}
 
-      {{#unless connected}}
-        <nav id="connectionAlert" class="navbar navbar-default navbar-fixed-bottom">
-          <div class="connectionPanel container">
-            <span id="connectionIcon" class="icon-sync"></span>
-            <div class="meta">
-              <div id="connectionTitle" class="title-notification">Trying to connect</div>
-              <div id="connectionMessage" class="description">There seems to be a connection issue</div>
+        {{#unless connected}}
+          <nav id="connectionAlert" class="navbar navbar-default navbar-fixed-bottom">
+            <div class="connectionPanel container">
+              <span id="connectionIcon" class="icon-sync"></span>
+              <div class="meta">
+                <div id="connectionTitle" class="title-notification">Trying to connect</div>
+                <div id="connectionMessage" class="description">There seems to be a connection issue</div>
+              </div>
             </div>
+          </nav>
+        {{/unless}}
+      </div>
+
+      <div id="listPanelFooter">
+        <div class="row">
+          {{#if hasGroupControls}}
+            <div class="homeButton centered footerButton col-xs-6">
+              <i class="fa fa-2x fa-home"></i><br>
+              Home
+            </div>
+            <div id="upsertGroupButton" class="centered footerButton col-xs-6">
+              <i class="fa fa-2x fa-plus"></i><br>
+              New <span class="hidden-xs">Group</span>
+            </div>
+          {{/if}}
+
+          {{#if hasGroupUpsertControls}}
+            <div class="homeButton centered footerButton col-xs-4">
+              <i class="fa fa-2x fa-home"></i><br>
+              Home
+            </div>
+            <div id="addContactToGroupButton" class="centered footerButton col-xs-4">
+              <i class="fa fa-2x fa-plus"></i><br>
+              Add <span class="hidden-xs">Contact</span>
+            </div>
+            <div id="deleteGroupButton" class="centered footerButton col-xs-4">
+              <i class="fa fa-2x fa-minus"></i><br>
+              Delete <span class="hidden-xs">Group</span>
+            </div>
+          {{/if}}
+
+          {{#if hasContactControls}}
+            <div class="centered footerButton col-xs-6">
+              <i class="fa fa-2x fa-home"></i><br>
+              Home
+            </div>
+            <div id="upsertContactButton" class="centered footerButton col-xs-6">
+              <i class="fa fa-2x fa-plus"></i><br>
+              New <span class="hidden-xs">Contact</span>
+            </div>
+            <!-- <div class="centered footerButton col-xs-3">
+              <i class="fa fa-2x fa-cog"></i><br>
+              Edit <span class="hidden-xs">Contact</span>
+            </div> -->
+            <!-- <div class="centered footerButton col-xs-4">
+              <i class="fa fa-2x fa-minus"></i><br>
+              Delete <span class="hidden-xs">Contact</span>
+            </div> -->
+          {{/if}}
+
+          {{#if hasContactUpsertControls}}
+            <div class="contactsListButton centered footerButton col-xs-4">
+              <i class="fa fa-2x fa-list"></i><br>
+              Contacts
+            </div>
+            <div id="createContactButton" class="centered footerButton col-xs-4">
+              <i class="fa fa-2x fa-plus"></i><br>
+              Save <span class="hidden-xs">Contact</span>
+            </div>
+            <div id="deleteContactButton" class="centered footerButton col-xs-4">
+              <i class="fa fa-2x fa-minus"></i><br>
+              Delete <span class="hidden-xs">Contact</span>
+            </div>
+          {{/if}}
+          <!-- {{#if hasContactModalControls}}
+          <div class="centered footerButton col-xs-6">
+            <i class="fa fa-2x fa-home"></i><br>
+            Home
           </div>
-        </nav>
-      {{/unless}}
+          <div id="selectContactButton" class="centered footerButton col-xs-6">
+            <i class="fa fa-2x fa-plus"></i><br>
+            Select
+          </div>
+          {{/if}} -->
+        </div>
+      </div>
+
     </div>
 
 

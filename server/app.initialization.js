@@ -9,6 +9,10 @@ Meteor.startup(function() {
   // Make sure to remove real password when pushing onto github
   process.env.MAIL_URL = 'smtp://email@gmail.com:password@smtp.gmail.com:465';
 
+
+  // Loading test data temporarily
+
+
   // Loading test data temporarily
   if (Groups.find().count() === 0) {
     var testGroups = [{
@@ -92,9 +96,9 @@ Meteor.startup(function() {
     // Avoid duplicates.  TODO: Need one more unique field for contacts
     // Make sure that the indexes are dropped before recreating index with different options otherwise they
     // won't get rebuilt
-    Groups._ensureIndex( { groupId: 1, createdBy: 1 }, { unique: true, dropDups: true } );
+
+    Groups._ensureIndex( { groupId: 1 }, { unique: true, dropDups: true } );
     Contacts._ensureIndex( { ownerId: 1,  title: 1, email: 1, phone: 1}, { unique: true, dropDups: true } );
     Messages._ensureIndex( { groupId: 1,  createdBy: 1}, { unique: true, dropDups: true } );
 
 });
-

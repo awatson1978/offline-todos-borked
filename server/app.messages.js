@@ -76,7 +76,7 @@ Meteor.methods({
     // sendText(to, from, subject, message);
 
     // loop through every contact in groupId
-    // TODO: see implementation of displayContacts
+    // TODO: see implementation of contactsListPage
     // check their preferences of contact method email or text or voice
     // wait 20 minutes between send
   }

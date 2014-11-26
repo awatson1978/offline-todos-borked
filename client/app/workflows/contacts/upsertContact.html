@@ -1,7 +1,46 @@
-<template name="upsertContact">
-  <div id="upsertContact">
+<template name="upsertContactPage">
+  <div id="upsertContactPage" class="page lists-show">
+
+    <nav id="listPanelHeader" class="page-nav js-title-nav">
+      <h1 id="listPanelTitle" class="js-edit-list title-page"><span class="title-wrapper">Edit Contact</span></h1>
+      <!-- <input id="listPanelNewItemInput" type="text" placeholder="Type to add new tasks"> -->
+      <div class="search">
+        <!-- <input id="contactSearchInput" class="search fullwidth" type="text" name="search" placeholder="Search..." value="{{getContactSearchFilter}}"> -->
+        <input id="listPanelNewItemInput" class="search-text" type="text" placeholder="Search contacts..." autocomplete="off">
+        <span id="listPanelNewItemIcon" class="icon-edit js-todo-add"></span>
+      </div>
+    </nav>
+
     {{#with contact}}
-      <div class="panel panel-success">
+
+      <div class="padded with-navbar-offset">
+        <h3>Personal Info</h3>
+        <br>
+        <div class="form-group">
+          <label for="contactNameInput">Name</label>
+          <input id="contactNameInput" type="text" class="form-control" value={{name}}>
+        </div>
+        <div class="form-group">
+          <label for="contactEmailInput">Email</label>
+          <input type="text" class="form-control" id="contactEmailInput" placeholder="jane@somewhere.net" value={{email.primary}}>
+        </div>
+        <div class="form-group">
+          <label for="contactPhoneInput">Phone</label>
+          <input type="text" class="form-control" id="contactPhoneInput" placeholder="718-555-1234" value={{ profile.phone }}>
+        </div>
+        <hr>
+        <h3>Groups</h3>
+        <br>
+        {{#if hasGroups}}
+        {{else}}
+        <span class="label label-default">None</span>
+        {{/if}}
+        <hr>
+        <h3>Preferences</h3>
+
+      </div>
+
+      <!-- <div class="panel panel-success">
         <div class="panel-heading">
           <h3 class="panel-title">{{getUpsertContactTitle}}</h3>
         </div>
@@ -19,7 +58,7 @@
           <button id="deleteContactButton" class="btn btn-success">Delete</button>
 
         </div>
-      </div>
+      </div> -->
     {{/with}}
   </div>
 </template>
