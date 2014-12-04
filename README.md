@@ -46,3 +46,9 @@ terminal-b$ sudo ./run_nightwatch.sh
 terminal-b$ sudo ./run_nightwatch.sh -t tests/homePage.js
 
 ````
+
+
+============================
+#### Licensing
+
+MIT License. Use as you wish, including for commercial purposes.
